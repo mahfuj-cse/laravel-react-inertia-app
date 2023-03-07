@@ -33,7 +33,7 @@ export default function Welcome(props) {
                 </div>
 
                 <div className="max-w-7xl mx-auto p-6 lg:p-8">
-                    <div className="flex justify-center">
+                    {/* <div className="flex justify-center">
                         <svg
                             viewBox="0 0 62 65"
                             fill="none"
@@ -45,9 +45,9 @@ export default function Welcome(props) {
                                 fill="#FF2D20"
                             />
                         </svg>
-                    </div>
+                    </div> */}
 
-                    <div className="mt-16">
+                    {/* <div className="mt-16">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                             <a
                                 href="https://laravel.com/docs"
@@ -288,9 +288,9 @@ export default function Welcome(props) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="flex justify-center mt-16 px-6 sm:items-center sm:justify-between">
+                    {/* <div className="flex justify-center mt-16 px-6 sm:items-center sm:justify-between">
                         <div className="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
                             <div className="flex items-center gap-4">
                                 <a
@@ -318,7 +318,7 @@ export default function Welcome(props) {
                         <div className="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
                             Laravel v{props.laravelVersion} (PHP v{props.phpVersion})
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

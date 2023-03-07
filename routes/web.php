@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,14 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+
+
+
+Route::get('/files', [FileController::class, 'index'])->name('files.index');
+
+Route::post('/files', [FileController::class, 'create'])->name('files.create');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
