@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function fileUploads()
+    public function files()
     {
         return $this->hasMany(File::class);
     }

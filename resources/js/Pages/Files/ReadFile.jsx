@@ -1,17 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import moment from 'moment';
 import "./ReadFile.css";
-// import { url } from '../../helpers/url'; // URL helper function for Laravel
-
-const ReadFile = () => {
-  const [files, setFiles] = React.useState([]);
-
-  React.useEffect(() => {
-    axios.get(route('files.show')).then((response) => {
-      setFiles(response.data);
-    });
-  }, []);
+const ReadFile = (props) => {
+    const files = props.files;
 
   return (
     <section>
@@ -27,25 +18,28 @@ const ReadFile = () => {
           <tbody>
             {files.map((file, index) => (
               <tr key={index}>
-                <td>{file.url}</td>
-                <td>{moment(file.createdOn).format('MMMM DD, YYYY')}</td>
+                <td>{file.filename}</td>
+                <td>{moment(file.created_at).format('MMMM DD, YYYY')}</td>
                 <td>
                   <a
                     rel="noreferrer"
                     target="_blank"
                     download
-                    href={url(file.url)}
+                    // href={url(file.url)}
+                    href="{{ asset('storage/uploads/' . file.filename) }}"
+
                     className="download-link"
                   >
                     Download
                   </a>
+                  
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        ''
+        <h1>not found {files.length}</h1>
       )}
     </section>
   );

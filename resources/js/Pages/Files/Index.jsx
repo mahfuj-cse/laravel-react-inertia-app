@@ -29,7 +29,7 @@ const Index = () => {
         formData.append('file', file);
         
         try {
-            return await axios.post(route('files.create'), formData, {
+            return await axios.post(route('files.store'), formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

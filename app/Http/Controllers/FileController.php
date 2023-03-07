@@ -16,13 +16,34 @@ class FileController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Files/Index');
+        // return Inertia::render('Files/Index');
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
+    {
+        return Inertia::render('Files/Index');
+    }
+
+
+    public function getFiles()
+   {
+
+    $userFiles = auth()->user()->files()->get();
+    return Inertia::render('Files/ReadFile', [
+        'files' => $userFiles
+    ]);
+    // return response()->json($userFiles);
+   
+   }
+
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
         // Validate the request
         $validatedData = $request->validate([
@@ -49,14 +70,6 @@ class FileController extends Controller
         $url = Storage::disk('public')->url('uploads/' . $filename);
         $data = ['url' => $url, 'filename' => $filename];
         return response()->json($data);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreFileRequest $request)
-    {
-        //
     }
 
     /**
