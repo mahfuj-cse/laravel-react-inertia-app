@@ -38,9 +38,17 @@ class FileController extends Controller
         // Store the file on the disk
         Storage::disk('public')->putFileAs('uploads', $file, $filename);
 
+           // Create a new file upload record
+           $fileUpload = new File();
+           $fileUpload->filename = $filename;
+           $fileUpload->url = 'uploads/' . $filename;
+           $fileUpload->user_id = auth()->user()->id;
+           $fileUpload->save();
+
         // Return a response with the file URL
         $url = Storage::disk('public')->url('uploads/' . $filename);
-        return response()->json(['url' => $url]);
+        $data = ['url' => $url, 'filename' => $filename];
+        return response()->json($data);
     }
 
     /**

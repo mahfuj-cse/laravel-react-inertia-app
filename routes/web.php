@@ -31,8 +31,7 @@ Route::get('/', function () {
 
 
 
-// Route::get('/files', [FileController::class, 'index'])->name('files.index');
-Route::get('/files', [FileController::class, 'show'])->name('files.show');
+// Route::get('/files', [FileController::class, 'show'])->name('files.show');
 
 Route::post('/files', [FileController::class, 'create'])->name('files.create');
 
@@ -45,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/files', [FileController::class, 'index'])->name('files.index');
+
 });
 
 require __DIR__.'/auth.php';
