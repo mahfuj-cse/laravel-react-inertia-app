@@ -56,7 +56,8 @@ class FileController extends Controller
      */
     public function show(File $file)
     {
-        //
+        return Inertia::render('Files/ReadFile');
+        
     }
 
     /**

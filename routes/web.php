@@ -31,7 +31,8 @@ Route::get('/', function () {
 
 
 
-Route::get('/files', [FileController::class, 'index'])->name('files.index');
+// Route::get('/files', [FileController::class, 'index'])->name('files.index');
+Route::get('/files', [FileController::class, 'show'])->name('files.show');
 
 Route::post('/files', [FileController::class, 'create'])->name('files.create');
 
