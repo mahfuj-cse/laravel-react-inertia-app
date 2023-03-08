@@ -4,7 +4,6 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 const ReadFile = (props) => {
     const files = props.files.data;
-    console.log(files);
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -15,10 +14,10 @@ const ReadFile = (props) => {
                 </h2>
             }
         >
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="relative mx-16 mt-4 overflow-x-auto sm:rounded-lg">
                 {files.length ? (
-                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 shadow-md">
+                        <thead className="text-xs text-white uppercase bg-gray-700">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
                                     File name
@@ -66,7 +65,7 @@ const ReadFile = (props) => {
                         </tbody>
                     </table>
                 ) : (
-                    <h1>not found {files.length}</h1>
+                    <h1 className="font-bold text-lg text-center mt-8">You did not have any uploaded file</h1>
                 )}
             </div>
         </AuthenticatedLayout>

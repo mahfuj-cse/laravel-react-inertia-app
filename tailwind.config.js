@@ -10,7 +10,6 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.jsx',
     ],
-    darkMode: 'class',
     theme: {
         extend: {
             fontFamily: {

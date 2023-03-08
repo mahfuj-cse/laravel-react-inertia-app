@@ -8,7 +8,6 @@ const Index = (props) => {
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
     const [renderKey, setRenderKey] = useState(0);
-    console.log(files, setFiles, error, setError);
     const handleClick = (event) => {};
 
     success &&
