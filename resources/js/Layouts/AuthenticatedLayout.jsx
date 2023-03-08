@@ -4,6 +4,9 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogleDrive } from "@fortawesome/free-brands-svg-icons";
+
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -16,8 +19,13 @@ export default function Authenticated({ auth, header, children }) {
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                                <Link href="/files">
+                                    <FontAwesomeIcon
+                                        icon={faGoogleDrive}
+                                        size="2x"
+                                        color="#0F9D58"
+                                        className="mr-2"
+                                    />
                                 </Link>
                             </div>
 
@@ -38,9 +46,7 @@ export default function Authenticated({ auth, header, children }) {
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                               
-                            </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"></div>
                             <div className="ml-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
