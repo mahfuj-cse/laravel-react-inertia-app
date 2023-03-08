@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreFileRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateFileRequest;
+use App\Http\Resources\FileResourceCollection;
 
 class FileController extends Controller
 {
@@ -31,7 +32,7 @@ class FileController extends Controller
     public function getFiles()
    {
 
-    $userFiles = auth()->user()->files()->get();
+    $userFiles = new FileResourceCollection(auth()->user()->files()->get());
     return Inertia::render('Files/ReadFile', [
         'files' => $userFiles
     ]);
@@ -62,12 +63,12 @@ class FileController extends Controller
            // Create a new file upload record
            $fileUpload = new File();
            $fileUpload->filename = $filename;
-           $fileUpload->url = 'uploads/' . $filename;
+           $fileUpload->url = $filename;
            $fileUpload->user_id = auth()->user()->id;
            $fileUpload->save();
 
         // Return a response with the file URL
-        $url = Storage::disk('public')->url('uploads/' . $filename);
+        $url = Storage::disk('public')->url($filename);
         $data = ['url' => $url, 'filename' => $filename];
         return response()->json($data);
     }

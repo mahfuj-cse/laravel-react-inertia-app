@@ -21,6 +21,7 @@ export default function Welcome(props) {
                             >
                                 Log in
                             </Link>
+                          
 
                             <Link
                                 href={route('register')}
@@ -47,7 +48,7 @@ export default function Welcome(props) {
                         </svg>
                     </div>
 
-                    
+                  
 
                   
                 </div>
