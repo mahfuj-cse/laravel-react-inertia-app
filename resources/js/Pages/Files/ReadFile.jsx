@@ -11,7 +11,7 @@ const ReadFile = (props) => {
             errors={props.errors}
             header={
                 <h2 className="text-center font-semibold text-xl text-gray-800 leading-tight">
-                      Uploaded Files
+                    Uploaded Files
                 </h2>
             }
         >
@@ -26,9 +26,6 @@ const ReadFile = (props) => {
                                 <th scope="col" className="px-6 py-3">
                                     Time
                                 </th>
-                                <th scope="col" className="px-6 py-3">
-                                    File Url
-                                </th>
 
                                 <th scope="col" className="px-6 py-3">
                                     Action
@@ -37,7 +34,10 @@ const ReadFile = (props) => {
                         </thead>
                         <tbody>
                             {files?.map((file, index) => (
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"  key={index}>
+                                <tr
+                                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                    key={index}
+                                >
                                     <th
                                         scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -49,7 +49,6 @@ const ReadFile = (props) => {
                                             "MMMM DD, YYYY"
                                         )}
                                     </td>
-                                    <td className="px-6 py-4">{file.url}</td>
 
                                     <td className="px-6 py-4">
                                         <a

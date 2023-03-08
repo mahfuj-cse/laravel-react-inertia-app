@@ -80,27 +80,12 @@ class FileController extends Controller
         return Inertia::render('Files/ReadFile');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(File $file)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateFileRequest $request, File $file)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(File $file)
     {
-        //
     }
 }
