@@ -10,8 +10,8 @@ const ReadFile = (props) => {
             auth={props.auth}
             errors={props.errors}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Files
+                <h2 className="text-center font-semibold text-xl text-gray-800 leading-tight">
+                      Uploaded Files
                 </h2>
             }
         >

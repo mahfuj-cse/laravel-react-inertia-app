@@ -8,7 +8,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 
 
-Route::get('/', function () {
+Route::middleware('guest')->get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/files', function () {
+    return Inertia::render('files');
+})->middleware(['auth', 'verified'])->name('files');
 
 Route::middleware('auth')->group(function () {
     Route::get('/files/create', [FileController::class, 'create'])->name('files.create');
