@@ -17,7 +17,6 @@ class FileController extends Controller
      */
     public function index()
     {
-        // return Inertia::render('Files/Index');
     }
 
     /**
@@ -30,15 +29,15 @@ class FileController extends Controller
 
 
     public function getFiles()
-   {
+    {
 
-    $userFiles = new FileResourceCollection(auth()->user()->files()->get());
-    return Inertia::render('Files/ReadFile', [
-        'files' => $userFiles
-    ]);
-    // return response()->json($userFiles);
-   
-   }
+        $userFiles = new FileResourceCollection(auth()->user()->files()->get());
+        return Inertia::render('Files/ReadFile', [
+            'files' => $userFiles
+        ]);
+        // return response()->json($userFiles);
+
+    }
 
 
     /**
@@ -60,12 +59,12 @@ class FileController extends Controller
         // Store the file on the disk
         Storage::disk('public')->putFileAs('uploads', $file, $filename);
 
-           // Create a new file upload record
-           $fileUpload = new File();
-           $fileUpload->filename = $filename;
-           $fileUpload->url = $filename;
-           $fileUpload->user_id = auth()->user()->id;
-           $fileUpload->save();
+        // Create a new file upload record
+        $fileUpload = new File();
+        $fileUpload->filename = $filename;
+        $fileUpload->url = $filename;
+        $fileUpload->user_id = auth()->user()->id;
+        $fileUpload->save();
 
         // Return a response with the file URL
         $url = Storage::disk('public')->url($filename);
@@ -79,7 +78,6 @@ class FileController extends Controller
     public function show(File $file)
     {
         return Inertia::render('Files/ReadFile');
-        
     }
 
     /**

@@ -1,39 +1,40 @@
 import axios from "axios";
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import "./index.css";
 
-
-const Index = () => {
+const Index = (props) => {
     const [files, setFiles] = useState([]);
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
     const hiddenFileInput = React.useRef(null);
-    console.log(files, setFiles, error, setError)
+    console.log(files, setFiles, error, setError);
     const handleClick = (event) => {
         hiddenFileInput.current.click();
     };
 
     success &&
         setTimeout(() => {
-            setSuccess('');
+            setSuccess("");
         }, 1000);
 
     const handleChange = (e) => {
-        setError('');
+        setError("");
         setFiles([...files, ...Array.from(e.target.files)]);
     };
 
     const saveSingleImage = async (file) => {
         const formData = new FormData();
-        formData.append('file', file);
-        
+        formData.append("file", file);
+
         try {
-            return await axios.post(route('files.store'), formData, {
+            return await axios.post(route("files.store"), formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    "Content-Type": "multipart/form-data",
                 },
             });
+            ss;
         } catch (err) {
             return Promise.reject(err);
         }
@@ -41,7 +42,7 @@ const Index = () => {
 
     const handleUpload = async () => {
         if (!files.length) {
-            setError('Please select a file to upload.');
+            setError("Please select a file to upload.");
             return;
         }
         setLoading(true);
@@ -50,13 +51,21 @@ const Index = () => {
         });
         await Promise.all(promises).then((res) => {
             setLoading(false);
-            setSuccess('file saved successfully');
+            setSuccess("file saved successfully");
             setFiles([]);
         });
     };
 
     return (
-       
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            header={
+                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                    Upload File
+                </h2>
+            }
+        >
             <section className="container">
                 <div className="file-upload">
                     <h3>Upload Files:</h3>
@@ -85,22 +94,22 @@ const Index = () => {
                                 ref={hiddenFileInput}
                                 multiple
                                 onChange={handleChange}
-                                style={{ display: 'none' }}
+                                style={{ display: "none" }}
                             />
                         </div>
                     </div>
                 </div>
                 <div className="btn-container">
-        <button onClick={handleUpload} disabled={loading}>
-          Submit
-        </button>
-      </div>
-      {success && <p className="success-message">{success}</p>}
+                    <button onClick={handleUpload} disabled={loading}>
+                        Submit
+                    </button>
+                </div>
+                {success && <p className="success-message">{success}</p>}
 
-      {error && <p className="error-message">{error}</p>}
-      </section>
-      
+                {error && <p className="error-message">{error}</p>}
+            </section>
+        </AuthenticatedLayout>
     );
- }
+};
 
- export default Index;
+export default Index;

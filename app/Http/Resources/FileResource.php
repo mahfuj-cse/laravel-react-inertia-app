@@ -16,7 +16,7 @@ class FileResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'url' => asset('public/storage/uploads/'.$this->url),
+            'url' => asset('/storage/uploads/'.$this->url),
             'filename' => $this->filename,
         ];
     }
