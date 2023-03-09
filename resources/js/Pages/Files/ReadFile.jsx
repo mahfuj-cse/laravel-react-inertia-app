@@ -1,9 +1,15 @@
 import React from "react";
 import moment from "moment";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { router  } from "@inertiajs/react";
 
 const ReadFile = (props) => {
     const files = props.files.data;
+    function destroy(id) {
+        if (confirm("Are you sure you want to Delete")) {
+            router.delete("files/destroy/" + id);
+        }
+    }
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -59,13 +65,16 @@ const ReadFile = (props) => {
                                         >
                                             Download
                                         </a>
+                                        <button className="focus:outline-none text-white focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2 mb-2 bg-red-500 focus:ring-red-800" onClick={()=>destroy(file.id)} >Delete</button>
+                                        
+                                        
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 ) : (
-                    <h1 className="font-bold text-lg text-center mt-8">You did not have any uploaded file</h1>
+                    <h1 className="font-bold text-lg text-center mt-8">You don't have any uploaded file</h1>
                 )}
             </div>
         </AuthenticatedLayout>

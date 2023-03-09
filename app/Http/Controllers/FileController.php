@@ -85,7 +85,10 @@ class FileController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(File $file)
+    public function destroy(int $id)
     {
+        $file = File::find($id);
+        Storage::delete('public/uploads/' . $file->filename);
+        $file->delete();
     }
 }

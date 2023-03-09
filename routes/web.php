@@ -18,17 +18,17 @@ Route::middleware('guest')->get('/', function () {
 });
 
 
-
-
-
 Route::get('/files', function () {
     return Inertia::render('files');
 })->middleware(['auth', 'verified'])->name('files');
 
 Route::middleware('auth')->group(function () {
+    // Route::resource('files', FileController::class)->except(['create', 'update', 'index']);
     Route::get('/files/create', [FileController::class, 'create'])->name('files.create');
     Route::post('/files', [FileController::class, 'store'])->name('files.store');
     Route::get('/files', [FileController::class, 'getFiles'])->name('files.getfiles');
+    Route::delete('/files/destroy/{id}', [FileController::class, 'destroy'])->name('files.destroy');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
